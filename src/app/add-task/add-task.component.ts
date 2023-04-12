@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Todo, TodoService } from './../service/task.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { Todo, TodoService } from './../service/task.service';
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent implements OnInit {
-  todoForm: FormGroup;
+  todoForm: UntypedFormGroup;
 
   constructor(
     private todoService: TodoService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit() {
