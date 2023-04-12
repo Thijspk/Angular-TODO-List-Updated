@@ -1,0 +1,9 @@
+
+.completed{
+  text-decoration: line-through}
+
+  .mid-item{
+    justify-content: flex-start;
+     margin-right: auto;
+     margin-left : 10px;
+  }

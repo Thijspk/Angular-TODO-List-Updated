@@ -1,0 +1,15 @@
+<div class="flex-container">
+  <div [formGroup]="todoForm" class="col-md-8">
+    <input type="input" formControlName="todo" />
+  </div>
+
+  <div class="col-md-4">
+    <button
+      class="btn btn-primary"
+      [disabled]="todoForm.invalid"
+      (click)="addTasks()"
+    >
+      Add
+    </button>
+  </div>
+</div>
