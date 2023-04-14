@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Todo, TodoService } from './../service/task.service';
+import { Store, Select } from '@ngxs/store';
+import { AddItemAction } from './task-actions';
+import { Observable } from 'rxjs';
+import { TaskSelectors } from './task-selector';
+import { TaskModel } from './task';
 
 @Component({
   selector: 'app-add-task',
@@ -8,24 +13,25 @@ import { Todo, TodoService } from './../service/task.service';
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent implements OnInit {
-  todoForm: UntypedFormGroup;
+
+  todoForm: FormGroup;
+
+  toDo!: string;
 
   constructor(
     private todoService: TodoService,
-    private formBuilder: UntypedFormBuilder
-  ) {}
+    private formBuilder: FormBuilder,
+    private store: Store
+  ) { }
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
-      todo: ['', Validators.required],
+      toDo: ['', Validators.required],
     });
   }
 
   addTasks() {
-    this.todoService.create({
-      value: this.todoForm.controls.todo.value,
-      completed: false,
-    });
-    this.todoForm.reset();
+    this.store.dispatch(new AddItemAction(this.toDo));
+    this.toDo = '';
   }
 }

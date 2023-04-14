@@ -2,19 +2,21 @@
 
 <div
   style="display:flex;justify-content: space-around; "
-  *ngFor="let todo of todos | async; let i = index"
+  *ngFor="let todo of taskItems$ | async; let i = index"
 >
   <div>
-    <input type="checkbox" (change)="completeTask($event.target, i)" />
+    <input type="checkbox" (change)="completeTask(todo)" />
   </div>
 
   <div class="mid-item">
-    <p [ngClass]="{ completed: todo.completed }">{{ todo.value }}</p>
+    <p [ngClass]="{ completed: todo.isDone }">{{ todo.title }}</p>
   </div>
 
   <div style="all">
-    <button type="button" class="btn btn-danger" (click)="deleteTask(todo.id)">
+    <button type="button" class="btn btn-danger" (click)="deleteTask(todo)">
       Delete
     </button>
   </div>
 </div>
+
+{{taskItems$ | async | json}}

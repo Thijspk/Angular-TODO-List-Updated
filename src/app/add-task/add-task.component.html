@@ -1,15 +1,12 @@
 <div class="flex-container">
-  <div [formGroup]="todoForm" class="col-md-8">
-    <input type="input" formControlName="todo" />
-  </div>
-
-  <div class="col-md-4">
-    <button
-      class="btn btn-primary"
-      [disabled]="todoForm.invalid"
-      (click)="addTasks()"
-    >
-      Add
-    </button>
+  <div class="flex items-center" class="col-md-8">
+    <mat-form-field class="mr-4" appearance="fill">
+      <input matInput autocomplete="off" [(ngModel)]="toDo" />
+    </mat-form-field>
+    <div class="col-md-4">
+      <button class="btn btn-primary" type="button" mat-raised-button color="primary" (click)="addTasks()">
+        Add
+      </button>
+    </div>
   </div>
 </div>
