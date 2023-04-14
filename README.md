@@ -3,7 +3,7 @@ Created with StackBlitz ⚡️
 
 Use this link for the working program:
 
-[a link](stackblitz.com/edit/angular-9expkw)
+[todo working program - using Stackblitz](stackblitz.com/edit/angular-9expkw)
 
 To get a working Angular todo:
 
